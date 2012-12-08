@@ -1,25 +1,25 @@
 %define upstream_name    HTTP-Daemon
 %define upstream_version 6.00
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 3
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	4
 
-Summary:    Base class for simple HTTP servers
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/HTTP/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Base class for simple HTTP servers
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/HTTP/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(HTTP::Date)
-BuildRequires: perl(HTTP::Request)
-BuildRequires: perl(HTTP::Response)
-BuildRequires: perl(HTTP::Status)
-BuildRequires: perl(IO::Socket)
-BuildRequires: perl(LWP::MediaTypes)
-BuildRequires: perl(Sys::Hostname)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl(HTTP::Date)
+BuildRequires:	perl(HTTP::Request)
+BuildRequires:	perl(HTTP::Response)
+BuildRequires:	perl(HTTP::Status)
+BuildRequires:	perl(IO::Socket)
+BuildRequires:	perl(LWP::MediaTypes)
+BuildRequires:	perl(Sys::Hostname)
+BuildRequires:	perl-devel
+BuildArch:	noarch
 
 %description
 Instances of the 'HTTP::Daemon' class are HTTP/1.1 servers that listen on a
@@ -43,24 +43,31 @@ the HTTP/1.1 protocol.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
+%__perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes META.yml README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
 
+
+%changelog
+* Sun Jan 22 2012 Oden Eriksson <oeriksson@mandriva.com> 6.0.0-3mdv2012.0
++ Revision: 765332
+- rebuilt for perl-5.14.2
+
+* Sat Jan 21 2012 Oden Eriksson <oeriksson@mandriva.com> 6.0.0-2
++ Revision: 763863
+- rebuilt for perl-5.14.x
+
+* Wed May 04 2011 Guillaume Rousse <guillomovitch@mandriva.org> 6.0.0-1
++ Revision: 665970
+- import perl-HTTP-Daemon
 
