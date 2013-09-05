@@ -1,16 +1,15 @@
-%define upstream_name    HTTP-Daemon
-%define upstream_version 6.00
-
-Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+%define modname	HTTP-Daemon
+%define modver	6.00
 
 Summary:	Base class for simple HTTP servers
-License:	GPL+ or Artistic
+Name:		perl-%{modname}
+Version:	%perl_convert_version %{modver}
+Release:	5
+License:	GPLv2+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/HTTP/%{upstream_name}-%{upstream_version}.tar.gz
-
+Url:		http://search.cpan.org/dist/%{modname}
+Source0:	http://www.cpan.org/modules/by-module/HTTP/%{modname}-%{modver}.tar.gz
+BuildArch:	noarch
 BuildRequires:	perl(HTTP::Date)
 BuildRequires:	perl(HTTP::Request)
 BuildRequires:	perl(HTTP::Response)
@@ -19,7 +18,6 @@ BuildRequires:	perl(IO::Socket)
 BuildRequires:	perl(LWP::MediaTypes)
 BuildRequires:	perl(Sys::Hostname)
 BuildRequires:	perl-devel
-BuildArch:	noarch
 
 %description
 Instances of the 'HTTP::Daemon' class are HTTP/1.1 servers that listen on a
@@ -40,7 +38,7 @@ note that the user is responsible for generating responses that conform to
 the HTTP/1.1 protocol.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -qn %{modname}-%{modver}
 
 %build
 %__perl Makefile.PL INSTALLDIRS=vendor
@@ -54,20 +52,6 @@ the HTTP/1.1 protocol.
 
 %files
 %doc Changes META.yml README
-%{_mandir}/man3/*
 %{perl_vendorlib}/*
-
-
-%changelog
-* Sun Jan 22 2012 Oden Eriksson <oeriksson@mandriva.com> 6.0.0-3mdv2012.0
-+ Revision: 765332
-- rebuilt for perl-5.14.2
-
-* Sat Jan 21 2012 Oden Eriksson <oeriksson@mandriva.com> 6.0.0-2
-+ Revision: 763863
-- rebuilt for perl-5.14.x
-
-* Wed May 04 2011 Guillaume Rousse <guillomovitch@mandriva.org> 6.0.0-1
-+ Revision: 665970
-- import perl-HTTP-Daemon
+%{_mandir}/man3/*
 
