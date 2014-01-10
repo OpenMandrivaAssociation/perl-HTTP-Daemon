@@ -1,14 +1,14 @@
 %define modname	HTTP-Daemon
-%define modver	6.00
+%define modver 6.01
 
 Summary:	Base class for simple HTTP servers
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	9
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{modname}
-Source0:	http://www.cpan.org/modules/by-module/HTTP/%{modname}-%{modver}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/HTTP/HTTP-Daemon-%{modver}.tar.gz
 BuildArch:	noarch
 BuildRequires:	perl(HTTP::Date)
 BuildRequires:	perl(HTTP::Request)
@@ -54,4 +54,5 @@ the HTTP/1.1 protocol.
 %doc Changes META.yml README
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
+
 
