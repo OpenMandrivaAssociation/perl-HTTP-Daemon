@@ -4,7 +4,7 @@
 Summary:	Base class for simple HTTP servers
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	7
+Release:	8
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{modname}
@@ -17,6 +17,8 @@ BuildRequires:	perl(HTTP::Status)
 BuildRequires:	perl(IO::Socket)
 BuildRequires:	perl(LWP::MediaTypes)
 BuildRequires:	perl(Sys::Hostname)
+BuildRequires:	perl(Test)
+BuildRequires:	perl(Test::More)
 BuildRequires:	perl-devel
 
 %description
