@@ -1,14 +1,13 @@
 %define modname	HTTP-Daemon
-%define modver 6.01
 
 Summary:	Base class for simple HTTP servers
 Name:		perl-%{modname}
-Version:	%perl_convert_version %{modver}
+Version:	6.16
 Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		https://search.cpan.org/dist/%{modname}
-Source0:	http://www.cpan.org/modules/by-module/HTTP/HTTP-Daemon-%{modver}.tar.gz
+Source0:	https://www.cpan.org/modules/by-module/HTTP/HTTP-Daemon-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	perl(HTTP::Date)
 BuildRequires:	perl(HTTP::Request)
@@ -19,7 +18,10 @@ BuildRequires:	perl(LWP::MediaTypes)
 BuildRequires:	perl(Sys::Hostname)
 BuildRequires:	perl(Test)
 BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Test::Needs)
+BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl-devel
+BuildRequires:	make
 
 %description
 Instances of the 'HTTP::Daemon' class are HTTP/1.1 servers that listen on a
@@ -40,21 +42,19 @@ note that the user is responsible for generating responses that conform to
 the HTTP/1.1 protocol.
 
 %prep
-%setup -qn %{modname}-%{modver}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
-%make
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
 %make test
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc Changes META.yml README
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
-
-
