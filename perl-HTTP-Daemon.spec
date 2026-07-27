@@ -3,7 +3,7 @@
 Summary:	Base class for simple HTTP servers
 Name:		perl-%{modname}
 Version:	6.16
-Release:	1
+Release:	2
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		https://search.cpan.org/dist/%{modname}
@@ -22,6 +22,9 @@ BuildRequires:	perl(Test::Needs)
 BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl-devel
 BuildRequires:	make
+
+# (ap) for check
+BuildRequires: perl-IO-Socket-IP
 
 %description
 Instances of the 'HTTP::Daemon' class are HTTP/1.1 servers that listen on a
