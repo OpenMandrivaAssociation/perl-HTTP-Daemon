@@ -2,8 +2,8 @@
 
 Summary:	Base class for simple HTTP servers
 Name:		perl-%{modname}
-Version:	6.16
-Release:	3
+Version:	6.17
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		https://search.cpan.org/dist/%{modname}
@@ -46,7 +46,7 @@ note that the user is responsible for generating responses that conform to
 the HTTP/1.1 protocol.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n HTTP-Daemon-6.17
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
