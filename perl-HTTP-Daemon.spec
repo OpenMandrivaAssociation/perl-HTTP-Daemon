@@ -49,14 +49,14 @@ the HTTP/1.1 protocol.
 %autosetup -p1 -n HTTP-Daemon-6.17
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+perl Build.PL --installdirs=vendor
+./Build
 
 %check
-%make test
+./Build test
 
 %install
-%make_install
+./Build install --destdir=%{buildroot}
 
 %files
 %doc Changes META.yml README
